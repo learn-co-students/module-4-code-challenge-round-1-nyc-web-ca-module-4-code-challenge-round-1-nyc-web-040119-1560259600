@@ -3,13 +3,14 @@ import BotCollection from "./BotCollection.js"
 import YourBotArmy from "./YourBotArmy.js"
 import BotSpecs from "../components/BotSpecs.js"
 class BotsPage extends React.Component {
-  //start here with your code for step one
+
   state={
     botList: [],
     botArmy: [],
     flipped: false,
     selectedBot: {}
   }
+
   componentDidMount(){
     fetch("https://bot-battler-api.herokuapp.com/api/v1/bots")
     .then(resp=>resp.json())
@@ -43,6 +44,7 @@ class BotsPage extends React.Component {
   }
 
   delistBot=(selectedBot)=>{
+    // remove bot from botArmy
     // console.log("Delist this!", selectedBot)
     const updatedBotArmy = []
     this.state.botArmy.map(bot=>{
@@ -55,17 +57,16 @@ class BotsPage extends React.Component {
   }
 
   flipCard=(selectedBot)=>{
+    // sets flipped state to true so it renders BotSpecs
     this.setState({
       flipped:true,
       selectedBot:selectedBot
     })
-    console.log("Flip this!", selectedBot)
-    // const flippedBot = {...selectedBot, isFlipped:true}
-    //
-    // console.log(flippedBot)
+    // console.log("Flip this!", selectedBot)
   }
 
   mainMenu=()=>{
+    // sets flipped state to false so it renders all of the bots
     this.setState({
       flipped:false
     })

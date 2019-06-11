@@ -65,7 +65,7 @@ If you have gotten this far, you have hit the checkpoint. Your app should look l
 
 Before proceeding to the next part of the challenge, __be sure to stage a commit at this point__. That way if your code breaks or you do not get to finish the next feature, we will be able to see that you were able to get up to this point. -->
 
-
+<!--
 #### 4. Refactor
 
 Now that you have some of the functionality of your app, it's time to refactor the code. Rather than enlisting the bot into the army, clicking on the card should instead display a show view (`BotSpecs`) for that bot, which should replace `BotsCollection`. BotSpecs should have two buttons: one to go back to the list view and another to enlist that bot.
@@ -74,7 +74,7 @@ This refactored version should look like the following:
 
 ![alt text][full_demo]
 
-[full_demo]: ./public/full_demo.gif "Full demo"
+[full_demo]: ./public/full_demo.gif "Full demo" -->
 
 
 #### BONUS
