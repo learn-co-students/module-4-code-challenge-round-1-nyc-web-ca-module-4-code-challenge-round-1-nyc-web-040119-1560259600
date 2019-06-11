@@ -18,7 +18,7 @@ const BotSpecs = props => {
     default:
       botType = <div />;
   }
-
+  // console.log('Bot Specs', props)
   return (
     <div className="ui segment">
       <div className="ui two column centered grid">
