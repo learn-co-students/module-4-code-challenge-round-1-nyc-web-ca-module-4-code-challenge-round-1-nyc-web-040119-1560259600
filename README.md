@@ -27,7 +27,7 @@ To start, run `npm install && npm start` to get the app up and running. Follow a
 
   json
     {
-      "id": 301,
+      <!-- "id": 301,
       "name": "gs-98",
       <!-- "health": 71,
       "damage": 85,
@@ -39,7 +39,7 @@ To start, run `npm install && npm start` to get the app up and running. Follow a
       "updated_at": "2017-12-08T14:13:45.272Z"
     } -->
 
-Based on the current structure of the app, think about where this array of bots needs to be stored.
+Based on the current structure of the app, think about where this array of bots needs to be stored. -->
 
 
 #### 2.  Indexing bots
@@ -55,7 +55,7 @@ _Note that nothing needs to be persisted. Refreshing the page should clear out t
 
 
 ## Checkpoint!
-<!-- 
+<!--
 If you have gotten this far, you have hit the checkpoint. Your app should look like the following:
 
 ![alt text][checkpoint]
@@ -67,9 +67,9 @@ Before proceeding to the next part of the challenge, __be sure to stage a commit
 
 #### 4. Refactor
 
-Now that you have some of the functionality of your app, it's time to refactor the code. Rather than enlisting the bot into the army, clicking on the card should instead display a show view (`BotSpecs`) for that bot, which should replace `BotsCollection`. BotSpecs should have two buttons: one to go back to the list view and another to enlist that bot.
+<!-- Now that you have some of the functionality of your app, it's time to refactor the code. Rather than enlisting the bot into the army, clicking on the card should instead display a show view (`BotSpecs`) for that bot, which should replace `BotsCollection`. BotSpecs should have two buttons: one to go back to the list view and another to enlist that bot.
 
-This refactored version should look like the following:
+This refactored version should look like the following: -->
 
 ![alt text][full_demo]
 
