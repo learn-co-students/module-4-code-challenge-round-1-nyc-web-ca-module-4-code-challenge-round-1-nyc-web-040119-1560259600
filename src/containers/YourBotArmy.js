@@ -8,6 +8,7 @@ class YourBotArmy extends React.Component {
         key={bot.id}
         bot={bot}
         handleClick={this.props.removeBot}
+        renderSpec={this.props.renderSpec}
         />
     })
   }
