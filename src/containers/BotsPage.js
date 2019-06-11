@@ -1,12 +1,16 @@
 import React from "react";
+import BotCollection from './BotCollection'
 
 class BotsPage extends React.Component {
-  //start here with your code for step one
 
   render() {
+    // console.log(this.props)
     return (
       <div>
-        {/* put your components here */}
+        <BotCollection
+          allBots={this.props.allBots}
+          enlistBot={this.props.enlistBot}
+        />
       </div>
     );
   }
