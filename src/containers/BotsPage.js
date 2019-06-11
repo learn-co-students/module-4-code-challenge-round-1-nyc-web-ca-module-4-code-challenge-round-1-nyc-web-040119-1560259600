@@ -53,7 +53,7 @@ class BotsPage extends React.Component {
     const showBotId = parseInt(e.currentTarget.id, 10)
     const findBotInBots = this.state.bots.find(bot => bot.id === showBotId)
 
-    this.setState({currBotSpecs: findBotInBots})
+    this.setState({currBotSpecs: findBotInBots, botsSearch: [], searchBy: ""})
   }
 
 
