@@ -7,6 +7,7 @@ class YourBotArmy extends React.Component {
       return (
         <BotCard
           key={bot.id}
+          removeBot={this.props.removeBot}
           bot={bot} />
       )
     })

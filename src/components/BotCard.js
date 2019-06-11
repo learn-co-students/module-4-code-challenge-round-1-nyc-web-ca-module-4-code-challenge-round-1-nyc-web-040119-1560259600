@@ -6,6 +6,10 @@ const BotCard = props => {
     if (props.addBot) {
       props.addBot(event)
     }
+
+    if (props.removeBot) {
+      props.removeBot(event)
+    }
   }
   // end ternary operator
 
@@ -26,7 +30,7 @@ const BotCard = props => {
     default:
       botType = <div />;
   }
-  
+
   return (
     <div className="ui column">
       <div

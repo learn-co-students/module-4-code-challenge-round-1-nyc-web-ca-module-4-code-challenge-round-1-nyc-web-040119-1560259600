@@ -26,8 +26,8 @@ class BotsPage extends React.Component {
     console.log("addBot", selectedBot)
 
     // remove selectedBot from current bots
-    const findIndex = botCopy.indexOf(selectedBot)
-    console.log("findIndex", findIndex)
+    // const findIndex = botCopy.indexOf(selectedBot)
+    // console.log("findIndex", findIndex)
 
     const removeSelectedBot = botCopy.filter(bot => bot.id !== selectedBot.id)
 
@@ -39,13 +39,31 @@ class BotsPage extends React.Component {
 
     console.log("myBots state", this.state)
   } // end addBot
+
+  removeBot = (event) => {
+    const myBotCopy = [...this.state.myBots]
+    const selectedMyBot = myBotCopy.find(bot => bot.id === parseInt(event.currentTarget.dataset.id))
+
+    console.log("removeBot", selectedMyBot)
+
+    // removed selectedMyBot from current myBots
+    const removeSelectedMyBot = myBotCopy.filter(bot => bot.id !== selectedMyBot.id)
+
+    // add selectedMyBot back to bots and removed selectedMyBot from myBots
+    this.setState({
+      bots: [...this.state.bots, selectedMyBot],
+      myBots: [...removeSelectedMyBot]
+    })
+  }
   // end HELPER FUNCTIONS
 
   render() {
     console.log("BotsPage state: ", this.state)
     return (
       <div>
-        <YourBotArmy myBots={this.state.myBots} />
+        <YourBotArmy
+          removeBot={this.removeBot}
+          myBots={this.state.myBots} />
         <BotCollection
           addBot={this.addBot}
           bots={this.state.bots} />

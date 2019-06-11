@@ -106,16 +106,16 @@ App
       - bots: []
       - myBots: [] -->
     <!-- - addBot -->
-    - removeBot
+    <!-- - removeBot -->
     - YourBotArmy
-      - **this.state.myBots**
-      - **this.removeBot**
-      - onClick removes the bot and adds to BotCollection
+      <!-- - **this.state.myBots** -->
+      <!-- - **this.removeBot** -->
+      <!-- - onClick removes the bot and adds to BotCollection -->
       - BotCard
-        - ternary action based on what props has been passed
-    <!-- - BotCollection -->
+        <!-- - ternary action based on what props has been passed -->
+    - BotCollection
       <!-- - **this.state.bots** -->
       <!-- - **this.addBot** -->
       <!-- - onClick removes the bot and adds to YourBotArmy -->
-      <!-- - BotCard -->
+      - BotCard
         <!-- - ternary action based on what props has been passed -->
