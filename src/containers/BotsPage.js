@@ -51,16 +51,26 @@ class BotsPage extends React.Component {
     console.log("addBot", selectedBot)
 
     // remove selectedBot from current bots
-    // const findIndex = botCopy.indexOf(selectedBot)
-    // console.log("findIndex", findIndex)
-
     const removeSelectedBot = botCopy.filter(bot => bot.id !== selectedBot.id)
 
-    // add to myBots state
-    this.setState({
-      bots: [...removeSelectedBot],
-      myBots: [...this.state.myBots, selectedBot]
-    })
+    // filtered
+    const filteredCopy = [...this.state.filtered]
+    const removeSelectedBotFiltered = filteredCopy.filter(bot => bot.id !== selectedBot.id)
+
+    if (this.state.filtered) {
+      // add to myBots state
+      this.setState({
+        bots: [...removeSelectedBot],
+        myBots: [...this.state.myBots, selectedBot],
+        filtered: [...removeSelectedBotFiltered]
+      })
+    } else {
+      this.setState({
+        bots: [...removeSelectedBot],
+        myBots: [...this.state.myBots, selectedBot]
+      })
+    }
+
 
     console.log("myBots state", this.state)
 
