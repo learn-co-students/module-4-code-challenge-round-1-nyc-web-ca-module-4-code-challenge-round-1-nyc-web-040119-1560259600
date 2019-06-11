@@ -48,12 +48,12 @@ class BotsPage extends React.Component {
     console.log('Bots Page State', this.state)
     return (
       <div>
+        <YourBotArmy
+          army={this.state.army}
+          removeBot={this.removeBot}/>
         <BotCollection
           bots={this.state.bots}
           addBot={this.addBot}/>
-        <YourBotArmy
-          bots={this.state.bots}
-          removeBot={this.removeBot}/>
 
       </div>
     );
