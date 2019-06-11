@@ -7,7 +7,8 @@ class BotsPage extends React.Component {
 
   state = {
     bots: [],
-    myMarineCorps: []
+    myMarineCorps: [],
+    selectedBot: []
   }
 
   componentDidMount() {
@@ -20,6 +21,16 @@ class BotsPage extends React.Component {
     })
   }
 
+  showBotDets = (e) => {
+    let showBot = this.state.bots.find(b=>{
+      return b.id === parseInt(e.currentTarget.id)
+    })
+    console.log(showBot);
+    this.setState({
+      selectedBot: [...this.state.selectedBot, showBot]
+    })
+  }
+
   recruits = (e) => {
     let recruited = this.state.bots.find(b=>{
       return b.id === parseInt(e.currentTarget.id)
@@ -28,7 +39,8 @@ class BotsPage extends React.Component {
       return b.id === parseInt(e.currentTarget.id)
     })
     alreadyRecruited.length === 0 ? this.setState({
-      myMarineCorps: [...this.state.myMarineCorps, recruited]
+      myMarineCorps: [...this.state.myMarineCorps, recruited],
+      selectedBot: []
     }) : false
   }
 
@@ -46,11 +58,11 @@ class BotsPage extends React.Component {
   }
 
   render() {
-    const { bots, myMarineCorps } = this.state
+    const { bots, myMarineCorps, selectedBot } = this.state
     return (
       <div>
         <YourBotArmy awol={this.awolBots} bots={myMarineCorps} />
-        <BotCollection recruits={this.recruits} bots={bots} />
+        <BotCollection showBotDets={this.showBotDets} recruits={this.recruits} awol={this.awolBots} selectedBot={selectedBot} bots={bots} />
       </div>
     );
   }

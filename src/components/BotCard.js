@@ -26,7 +26,10 @@ const BotCard = props => {
         className="ui card"
         key={bot.id}
         id={bot.id}
-        onClick={props.recruitAwol}>
+        onClick={props.showBotDets}>
+        {
+          /*change to recruitAwol if you fuck it up*/
+        }
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
         </div>
