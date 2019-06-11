@@ -36,6 +36,14 @@ class BotsPage extends React.Component {
     })
   } //botSelector
 
+  showSpecs = (event) => {
+    console.log(event.currentTarget.id);
+    let armyBot = this.state.bots.find(bot => parseInt(event.currentTarget.id) === bot.id)
+    // this.setState({
+    //   bots: armyBot.specs
+    // })
+  }
+
 
   render() {
     console.log(this.state.army);
@@ -46,7 +54,7 @@ class BotsPage extends React.Component {
       <BotCollection
       bots={this.state.bots}
       botSelector={this.botSelector}
-      botRemover={this.botRemover}
+      showSpecs={this.showSpecs}
       />
       </div>
     );
@@ -55,6 +63,3 @@ class BotsPage extends React.Component {
 }
 
 export default BotsPage;
-
-
-// <YourBoyArmy />
