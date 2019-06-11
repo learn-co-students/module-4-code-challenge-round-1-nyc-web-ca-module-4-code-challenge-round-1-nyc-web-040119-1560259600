@@ -1,6 +1,14 @@
 import React from "react";
 
 const BotCard = props => {
+  // ternary operator
+  const addRemoveClick = (event) => {
+    if (props.addBot) {
+      props.addBot(event)
+    }
+  }
+  // end ternary operator
+
   const { bot } = props;
 
   let botType;
@@ -18,13 +26,14 @@ const BotCard = props => {
     default:
       botType = <div />;
   }
-
+  
   return (
     <div className="ui column">
       <div
         className="ui card"
         key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        data-id={bot.id}
+        onClick={addRemoveClick}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />

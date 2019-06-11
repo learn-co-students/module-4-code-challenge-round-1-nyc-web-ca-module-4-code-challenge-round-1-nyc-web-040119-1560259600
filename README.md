@@ -97,3 +97,25 @@ When time is called, please stop coding, push your code to your fork, and submit
 4. Rendering - Is information rendered in the correct locations? Were you able to conditionally render different components (i.e. `BotSpecs` and `BotCollection`)?
 
 __Good Luck!__
+
+## MVP Outline
+
+App
+  - BotsPage
+    <!-- - **state**
+      - bots: []
+      - myBots: [] -->
+    <!-- - addBot -->
+    - removeBot
+    - YourBotArmy
+      - **this.state.myBots**
+      - **this.removeBot**
+      - onClick removes the bot and adds to BotCollection
+      - BotCard
+        - ternary action based on what props has been passed
+    <!-- - BotCollection -->
+      <!-- - **this.state.bots** -->
+      <!-- - **this.addBot** -->
+      <!-- - onClick removes the bot and adds to YourBotArmy -->
+      <!-- - BotCard -->
+        <!-- - ternary action based on what props has been passed -->
