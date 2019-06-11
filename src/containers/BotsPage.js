@@ -1,11 +1,14 @@
 import React from "react";
 import BotCollection from "./BotCollection.js"
 import YourBotArmy from "./YourBotArmy.js"
+import BotSpecs from "../components/BotSpecs.js"
 class BotsPage extends React.Component {
   //start here with your code for step one
   state={
     botList: [],
-    botArmy: []
+    botArmy: [],
+    flipped: false,
+    selectedBot: {}
   }
   componentDidMount(){
     fetch("https://bot-battler-api.herokuapp.com/api/v1/bots")
@@ -51,6 +54,29 @@ class BotsPage extends React.Component {
     })
   }
 
+  flipCard=(selectedBot)=>{
+    this.setState({
+      flipped:true,
+      selectedBot:selectedBot
+    })
+    console.log("Flip this!", selectedBot)
+    // const flippedBot = {...selectedBot, isFlipped:true}
+    //
+    // console.log(flippedBot)
+  }
+
+  mainMenu=()=>{
+    this.setState({
+      flipped:false
+    })
+  }
+
+  showFlippedCard=()=>{
+    return <BotSpecs key={this.state.selectedBot.id}
+    enlistBot={this.enlistBot}
+     bot={this.state.selectedBot}
+     mainMenu={this.mainMenu}/>
+  }
 
   render() {
     // console.log(this.state.botList)
@@ -60,11 +86,11 @@ class BotsPage extends React.Component {
       botArmy={this.state.botArmy}
       delistBot={this.delistBot}
       />
-      <BotCollection
-      botList={this.state.botList}
-      enlistBot={this.enlistBot}
-      />
-        {/* put your components here */}
+        {this.state.flipped? this.showFlippedCard():<BotCollection
+        botList={this.state.botList}
+        enlistBot={this.enlistBot}
+        flipCard={this.flipCard}
+        />}
       </div>
     );
   }
