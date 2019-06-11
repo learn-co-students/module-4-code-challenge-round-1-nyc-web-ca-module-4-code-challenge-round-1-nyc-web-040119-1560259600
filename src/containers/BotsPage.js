@@ -9,7 +9,9 @@ class BotsPage extends React.Component {
     bots: [],
     myBots: [],
     currentBot: [],
-    botPressed: false
+    botPressed: false,
+    filtered: [],
+    filterOn: false
   }
 
   componentDidMount() {
@@ -21,6 +23,26 @@ class BotsPage extends React.Component {
   }
 
   // HELPER FUNCTIONS
+  filterBots = (event) => {
+    const botCopy = [...this.state.bots]
+    const filteredBots = botCopy.filter(bot => bot.bot_class === event.target.value)
+
+    switch (event.target.value) {
+      case ("All"):
+        this.setState({
+          filtered: botCopy,
+          filterOn: false
+        })
+        break
+      default:
+        this.setState({
+          filtered: filteredBots,
+          filteredOn: true
+        })
+        break
+    }
+  }
+
   addBot = (event) => {
     // find the bot that is clicked
     const botCopy = [...this.state.bots]
@@ -83,11 +105,39 @@ class BotsPage extends React.Component {
 
   render() {
     console.log("BotsPage state: ", this.state)
+    const Filter = () => {
+      return (
+        <div style={{textAlign: 'center', marginBottom: '1em'}}>
+          <button
+            value="All"
+            onClick={event => this.filterBots(event)}>
+            All
+          </button>
+          <button
+            value="Assault"
+            onClick={event => this.filterBots(event)}>
+            Assault
+          </button>
+          <button
+            value="Defender"
+            onClick={event => this.filterBots(event)}>
+            Defender
+          </button>
+          <button
+            value="Support"
+            onClick={event => this.filterBots(event)}>
+            Support
+          </button>
+        </div>
+      )
+    }
     return (
       <div>
         <YourBotArmy
           removeBot={this.removeBot}
           myBots={this.state.myBots} />
+
+        {Filter()}
 
         {
           this.state.botPressed ?
@@ -98,7 +148,7 @@ class BotsPage extends React.Component {
         :
             <BotCollection
               selectCurrentBot={this.selectCurrentBot}
-              bots={this.state.bots} />
+              bots={this.state.filteredOn ? this.state.filtered : this.state.bots} />
         }
       </div>
     );
