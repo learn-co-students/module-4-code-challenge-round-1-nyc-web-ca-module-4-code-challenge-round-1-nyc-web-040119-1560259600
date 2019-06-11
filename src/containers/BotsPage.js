@@ -30,11 +30,18 @@ class BotsPage extends React.Component {
   }
   enlistToArmy = (bot) => {
     // console.log(bot);
+    // console.log(this.removeBotFromBots(bot));
+    const oneGone = this.removeBotFromBots(bot)
     this.setState({
       chosen: !this.state.chosen,
       army: [...this.state.army, bot],
-      bot:[]
+      bots: oneGone,
+      bot: []
     })
+
+  }
+  removeBotFromBots = (enlisted) => {
+    return [...this.state.bots].filter(bot => {return bot.id !== enlisted.id})
   }
   returnToScrapPile = (bot) => {
     this.setState({
