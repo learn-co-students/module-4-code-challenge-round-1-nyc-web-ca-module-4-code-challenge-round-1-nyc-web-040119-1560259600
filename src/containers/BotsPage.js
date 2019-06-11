@@ -2,6 +2,7 @@ import React from "react";
 import BotCollection from  './BotCollection';
 import YourBotArmy from "./YourBotArmy";
 import BotSpecs from "../components/BotSpecs";
+import SearchBar from "../components/SearchBar";
 
 
 class BotsPage extends React.Component {
@@ -20,6 +21,10 @@ class BotsPage extends React.Component {
         bots:bots
       })
     })
+  }
+
+  filterBotClass(botsClass) {
+    console.log(botsClass)
   }
   checkBotSpecs = (bot) => {
     // console.log("BotsPage", bot)
@@ -55,6 +60,8 @@ class BotsPage extends React.Component {
     // console.log("chosen", this.state.bot);
     return (
       <div>
+        <SearchBar
+        />
         {(!this.state.chosen)
         ? (<BotCollection
             bots={this.state.bots}
