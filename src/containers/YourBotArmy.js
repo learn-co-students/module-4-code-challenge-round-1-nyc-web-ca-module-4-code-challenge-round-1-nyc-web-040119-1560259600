@@ -10,7 +10,6 @@ class YourBotArmy extends React.Component {
       // console.dir(bot)
       return (
         <BotCard
-          key={bot.id}
           bot={bot}
         />
       )

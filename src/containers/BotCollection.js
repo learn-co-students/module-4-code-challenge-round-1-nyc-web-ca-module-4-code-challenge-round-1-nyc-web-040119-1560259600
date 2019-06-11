@@ -11,7 +11,7 @@ class BotCollection extends React.Component {
       return (
         <BotCard
           key={bot.id}
-          enlistBot={this.props.enlistBot}
+          deetBot={this.props.deetBot}
           bot={bot}
         />
       // id={bot.id}

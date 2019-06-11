@@ -9,7 +9,9 @@ class App extends Component {
 
   state = {
     allBots: [],
-    myBots: []
+    myBots: [],
+    showBot: false,
+    clickedBot: {}
   }
 
   componentWillMount(){
@@ -24,8 +26,8 @@ class App extends Component {
       })
   }
 
-  enlistBot = (e) => {
-    // console.log(e.target.id)
+  deetBot = (e) => {
+    /// original deliverables
     const target = parseInt(e.target.id)
 
     const clickedBot = () => {
@@ -33,10 +35,32 @@ class App extends Component {
         return bot.id === target
       })
     }
-    // console.log(clickedBot())
+    // const currentBots = [...this.state.myBots, clickedBot()]
+    //
+    // this.setState({
+    //   myBots: currentBots
+    // },() => ( console.log( this.state.myBots)))
+    ///
 
-    const currentBots = [...this.state.myBots, clickedBot()]
+    this.setState({
+      clickedBot: clickedBot() ,
+      showBot: true
+    })
 
+  }
+
+  enlist = (e) => {
+    console.log('we here')
+    // const target = parseInt(e.target.id)
+    console.log(this.state.clickedBot)
+    //
+    // const clickedBot = () => {
+    //   return this.state.allBots.find( (bot) => {
+    //     return bot.id === target
+    //   })
+    // }
+    const currentBots = [...this.state.myBots, this.state.clickedBot]
+    //
     this.setState({
       myBots: currentBots
     },() => ( console.log( this.state.myBots)))
@@ -58,7 +82,7 @@ class App extends Component {
     this.setState({
       myBots: currentBots
     })
-    
+
   }
 
   render() {
@@ -71,7 +95,10 @@ class App extends Component {
         />
         <BotsPage
           allBots={this.state.allBots}
-          enlistBot={this.enlistBot}
+          deetBot={this.deetBot}
+          showBot={this.state.showBot}
+          enlist={this.enlist}
+          clickedBot={this.state.clickedBot}
         />
       </div>
     );
