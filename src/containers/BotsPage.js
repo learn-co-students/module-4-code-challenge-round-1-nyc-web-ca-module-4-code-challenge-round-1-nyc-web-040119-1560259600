@@ -87,11 +87,20 @@ class BotsPage extends React.Component {
     // removed selectedMyBot from current myBots
     const removeSelectedMyBot = myBotCopy.filter(bot => bot.id !== selectedMyBot.id)
 
-    // add selectedMyBot back to bots and removed selectedMyBot from myBots
-    this.setState({
-      bots: [...this.state.bots, selectedMyBot],
-      myBots: [...removeSelectedMyBot]
-    })
+    if (this.state.filteredOn) {
+      // add selectedMyBot back to bots and removed selectedMyBot from myBots
+      this.setState({
+        bots: [...this.state.bots, selectedMyBot],
+        myBots: [...removeSelectedMyBot],
+        filtered: [...this.state.filtered, selectedMyBot]
+      })
+    } else {
+      // add selectedMyBot back to bots and removed selectedMyBot from myBots
+      this.setState({
+        bots: [...this.state.bots, selectedMyBot],
+        myBots: [...removeSelectedMyBot]
+      })
+    }
   } // end removeBot
 
   selectCurrentBot = (event) => {
