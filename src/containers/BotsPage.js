@@ -1,12 +1,15 @@
 import React from "react";
 import BotCollection from "./BotCollection"
+import BotSpecs from "../components/BotSpecs"
 import YourBotArmy from "./YourBotArmy"
 const API = "https://bot-battler-api.herokuapp.com/api/v1/bots"
 
 class BotsPage extends React.Component {
   state = {
     bots: [],
-    myBots: []
+    myBots: [],
+    currentBot: [],
+    botPressed: false
   }
 
   componentDidMount() {
@@ -38,6 +41,9 @@ class BotsPage extends React.Component {
     })
 
     console.log("myBots state", this.state)
+
+    // goBack from BotSpecs
+    this.goBack()
   } // end addBot
 
   removeBot = (event) => {
@@ -54,6 +60,24 @@ class BotsPage extends React.Component {
       bots: [...this.state.bots, selectedMyBot],
       myBots: [...removeSelectedMyBot]
     })
+  } // end removeBot
+
+  selectCurrentBot = (event) => {
+    const botCopy = [...this.state.bots]
+    const currentBot = botCopy.find(bot => bot.id === parseInt(event.currentTarget.dataset.id))
+    console.log("selectCurrentBot", currentBot)
+
+    this.setState({
+      currentBot,
+      botPressed: true
+    })
+    console.log("currentBot state: ", this.state)
+  } // end selectCurretBot
+
+  goBack = () => {
+    this.setState({
+      botPressed: false
+    })
   }
   // end HELPER FUNCTIONS
 
@@ -64,9 +88,18 @@ class BotsPage extends React.Component {
         <YourBotArmy
           removeBot={this.removeBot}
           myBots={this.state.myBots} />
-        <BotCollection
-          addBot={this.addBot}
-          bots={this.state.bots} />
+
+        {
+          this.state.botPressed ?
+            <BotSpecs
+              goBack={this.goBack}
+              addBot={this.addBot}
+              bot={this.state.currentBot} />
+        :
+            <BotCollection
+              selectCurrentBot={this.selectCurrentBot}
+              bots={this.state.bots} />
+        }
       </div>
     );
   }

@@ -102,11 +102,13 @@ __Good Luck!__
 
 App
   - BotsPage
-    <!-- - **state**
-      - bots: []
-      - myBots: [] -->
+    - **state**
+      <!-- - bots: [] -->
+      <!-- - myBots: [] -->
+      - currentBot
     <!-- - addBot -->
     <!-- - removeBot -->
+    - selectCurretBot
     - YourBotArmy
       <!-- - **this.state.myBots** -->
       <!-- - **this.removeBot** -->
@@ -114,8 +116,14 @@ App
       - BotCard
         <!-- - ternary action based on what props has been passed -->
     - BotCollection
+      - **this.selectCurretBot**
       <!-- - **this.state.bots** -->
       <!-- - **this.addBot** -->
       <!-- - onClick removes the bot and adds to YourBotArmy -->
       - BotCard
+        - onClick goes to BotSpecs card
         <!-- - ternary action based on what props has been passed -->
+    - BotSpecs
+      - buttons
+      - go back to BotCollection
+      - enlist Bot

@@ -3,8 +3,8 @@ import React from "react";
 const BotCard = props => {
   // ternary operator
   const addRemoveClick = (event) => {
-    if (props.addBot) {
-      props.addBot(event)
+    if (props.selectCurrentBot) {
+      props.selectCurrentBot(event)
     }
 
     if (props.removeBot) {
